@@ -1,3 +1,6 @@
 import React from 'react';
 
-export default () => <h1>Primeiro Componente (Arrow)!</h1>
+export default (props) => 
+    <div>
+        <h1>{props.valor}</h1>
+    </div>
