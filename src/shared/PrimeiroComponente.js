@@ -1,8 +1,16 @@
 import React from 'react';
-import MultiElementos from './MultiElementos';
+import Familia from './Familia';
+import Membro from './Membro';
 
 export default (props) => 
     <div>
-        <h1>{props.valor}</h1>
-        <MultiElementos></MultiElementos>
+        <Familia>
+            <Membro nome="Andre" sobrenome="Pereira"></Membro>
+            <Membro nome="Mariana" sobrenome="Pereira"></Membro>
+        </Familia>
+        <Familia>
+            <Membro nome="Bia" sobrenome="Arruda"></Membro>
+            <Membro nome="Gustavo" sobrenome="Arruda"></Membro>
+        </Familia>
     </div>
+
