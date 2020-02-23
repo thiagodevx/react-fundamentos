@@ -1,7 +1,3 @@
 import React from 'react';
 
-const PrimeiroComponente = () => (
-    <h1>Primeiro Componente</h1>
-)
-
-export default PrimeiroComponente
+export default () => <h1>Primeiro Componente (Arrow)!</h1>
