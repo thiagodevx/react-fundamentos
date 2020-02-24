@@ -1,14 +1,15 @@
 import React from 'react';
-import Familia from './Familia';
-import Membro from './Membro';
-import FamiliaSilva from './FamiliaSilva';
-import ComponenteComFuncao from './ComponenteComFuncao';
+import Pai from './Pai';
+// import Familia from './Familia';
+// import Membro from './Membro';
+// import FamiliaSilva from './FamiliaSilva';
+// import ComponenteComFuncao from './ComponenteComFuncao';
 
 
 
 export default (props) => 
     <div>
-        <Familia sobrenome="Pereira">
+        {/* <Familia sobrenome="Pereira">
             <Membro nome="Andre"></Membro>
             <Membro nome="Mariana"></Membro>
         </Familia>
@@ -17,6 +18,7 @@ export default (props) =>
             <Membro nome="Gustavo" sobrenome="Arruda"></Membro>
         </Familia>
         <FamiliaSilva sobrenome="Silva Pereira"></FamiliaSilva>
-        <ComponenteComFuncao></ComponenteComFuncao>
+        <ComponenteComFuncao></ComponenteComFuncao> */}
+        <Pai></Pai>
     </div>
 
