@@ -1,5 +1,6 @@
 import React from 'react';
-import Pai from './Pai';
+// import Pai from './Pai';
+import ComponenteClasse from './ComponenteClasse';
 // import Familia from './Familia';
 // import Membro from './Membro';
 // import FamiliaSilva from './FamiliaSilva';
@@ -19,6 +20,7 @@ export default (props) =>
         </Familia>
         <FamiliaSilva sobrenome="Silva Pereira"></FamiliaSilva>
         <ComponenteComFuncao></ComponenteComFuncao> */}
-        <Pai></Pai>
+        {/* <Pai></Pai> */}
+        <ComponenteClasse valor="Componente do tipo classe"></ComponenteClasse>
     </div>
 
