@@ -1,8 +1,7 @@
 import React from 'react';
+import {addPropsToChildren} from '../utils/utils';
 
 export default props =>
     <div>
-        {React.Children.map(props.children, child => {
-            return React.cloneElement(child, {sobrenome: props.sobrenome})
-        })}
+        {addPropsToChildren(props)}
     </div>
