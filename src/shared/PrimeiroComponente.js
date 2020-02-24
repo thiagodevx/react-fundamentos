@@ -2,6 +2,8 @@ import React from 'react';
 import Familia from './Familia';
 import Membro from './Membro';
 import FamiliaSilva from './FamiliaSilva';
+import ComponenteComFuncao from './ComponenteComFuncao';
+
 
 
 export default (props) => 
@@ -15,5 +17,6 @@ export default (props) =>
             <Membro nome="Gustavo" sobrenome="Arruda"></Membro>
         </Familia>
         <FamiliaSilva sobrenome="Silva Pereira"></FamiliaSilva>
+        <ComponenteComFuncao></ComponenteComFuncao>
     </div>
 
