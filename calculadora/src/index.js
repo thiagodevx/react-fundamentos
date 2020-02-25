@@ -4,5 +4,10 @@ import * as serviceWorker from './serviceWorker';
 import Calculator from './main/Calculator';
 import './index.css'
 
-ReactDOM.render(<Calculator></Calculator>, document.getElementById('root'));
+ReactDOM.render(
+    <>
+        <h1>Calculadora</h1>
+        <Calculator></Calculator>
+    </>
+        , document.getElementById('root'));
 serviceWorker.unregister();
