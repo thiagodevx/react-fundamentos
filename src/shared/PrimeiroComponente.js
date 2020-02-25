@@ -1,10 +1,8 @@
 import React from 'react';
-import ContadorFuncional from './ContadorFuncional';
-import ContadorClasse from './ContadorClasse';
+import Hook from './Hook';
 
 export default _ => 
     <div>
-        <ContadorFuncional></ContadorFuncional>
-        <ContadorClasse></ContadorClasse>
+        <Hook></Hook>
     </div>
 
