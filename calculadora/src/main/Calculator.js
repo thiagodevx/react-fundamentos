@@ -1,11 +1,13 @@
 import React from 'react'
 import Button from '../button/Button'
 import './Calculator.css'
+import Display from '../display/Display'
 
 export default _ => {
 
     return (
         <div className="calculator">
+            <Display value={'AAAAAAAA'}></Display>
             <Button label={'AC'}></Button>
             <Button label={'/'}></Button>
             <Button label={'7'}></Button>
