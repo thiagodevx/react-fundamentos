@@ -5,26 +5,30 @@ import Display from '../display/Display'
 
 export default _ => {
 
+    const buttonClicked = (buttonLabel) => {
+        alert('clicked on ' + buttonLabel)
+    }
+
     return (
         <div className="calculator">
-            <Display value={'AAAAAAAA'}></Display>
-            <Button label={'AC'}></Button>
-            <Button label={'/'}></Button>
-            <Button label={'7'}></Button>
-            <Button label={'8'}></Button>
-            <Button label={'9'}></Button>
-            <Button label={'*'}></Button>
-            <Button label={'4'}></Button>
-            <Button label={'5'}></Button>
-            <Button label={'6'}></Button>
-            <Button label={'-'}></Button>
-            <Button label={'1'}></Button>
-            <Button label={'2'}></Button>
-            <Button label={'3'}></Button>
-            <Button label={'+'}></Button>
-            <Button label={'0'}></Button>
-            <Button label={'.'}></Button>
-            <Button label={'='}></Button>
+            <Display value='AAAAAAAA'></Display>
+            <Button clicked={buttonClicked} label='AC'></Button>
+            <Button clicked={buttonClicked} label='/'></Button>
+            <Button clicked={buttonClicked} label='7'></Button>
+            <Button clicked={buttonClicked} label='8'></Button>
+            <Button clicked={buttonClicked} label='9'></Button>
+            <Button clicked={buttonClicked} label='*'></Button>
+            <Button clicked={buttonClicked} label='4'></Button>
+            <Button clicked={buttonClicked} label='5'></Button>
+            <Button clicked={buttonClicked} label='6'></Button>
+            <Button clicked={buttonClicked} label='-'></Button>
+            <Button clicked={buttonClicked} label='1'></Button>
+            <Button clicked={buttonClicked} label='2'></Button>
+            <Button clicked={buttonClicked} label='3'></Button>
+            <Button clicked={buttonClicked} label='+'></Button>
+            <Button clicked={buttonClicked} label='0'></Button>
+            <Button clicked={buttonClicked} label='.'></Button>
+            <Button clicked={buttonClicked} label='='></Button>
         </div>
     )
 }
