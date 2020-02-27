@@ -3,25 +3,44 @@ import Button from '../button/Button'
 import './Calculator.css'
 import Display from '../display/Display'
 
+const defaultState = {
+    displayValue: '0',
+    clearDisplay: false,
+    operation: null,
+    values: ['0', '0'],
+    current: 0
+}
+
 export default _ => {
 
-    const [result, setResult] = useState(0)
+    const [state, setState] = useState(defaultState)
 
     const clearMemory = _ => {
-        alert('clear')
+        setState({ ...defaultState })
     }
 
     const setOperation = (operation) => {
-        alert(operation)
+        const newState = { ...state }
+        if (operation === '=') {
+
+        }
+        setState(newState)
     }
 
     const addDigit = (digit) => {
-        setResult(digit)
+        if (digit === '.' && state.displayValue.includes('.')) {
+            return
+        }
+        const newDisplayValue = state.displayValue === '0' ? digit : state.displayValue + digit
+        const newState = { ...state }
+        newState.displayValue = newDisplayValue
+        newState.values[state.current] = newDisplayValue
+        setState(newState)
     }
 
     return (
         <div className="calculator">
-            <Display value={result}></Display>
+            <Display value={state.displayValue}></Display>
             <Button clicked={clearMemory} triple label='AC'></Button>
             <Button clicked={setOperation} operation label='/'></Button>
             <Button clicked={addDigit} label='7'></Button>
