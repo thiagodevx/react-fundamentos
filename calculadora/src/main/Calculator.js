@@ -38,9 +38,11 @@ export default _ => {
         setState(newState)
     }
 
+    const currentValue = state.clearDisplay ? '' : state.displayValue
+
     return (
         <div className="calculator">
-            <Display value={state.displayValue}></Display>
+            <Display value={currentValue}></Display>
             <Button clicked={clearMemory} triple label='AC'></Button>
             <Button clicked={setOperation} operation label='/'></Button>
             <Button clicked={addDigit} label='7'></Button>
