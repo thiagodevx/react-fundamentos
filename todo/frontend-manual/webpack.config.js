@@ -21,15 +21,15 @@ const webpackConfig = {
   ],
   module: {
     loaders: [{
-      text: /.js[x]?$/,
+      test: /.js[x]?$/,
       loader: 'babel-loader',
-      excluse: '/node_modules/',
+      exclude: '/node_modules/',
       query: {
         presets: ['es2015', 'react'],
         plugins: ['transform-object-rest-spread']
       }
     }, {
-      text: /\.css$/,
+      test: /\.css$/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
     }, {
       test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
