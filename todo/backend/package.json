@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "scripts": {
     "dev": "nodemon",
-    "production": "pm2 start src/index.js --name todo-app"
+    "production": "pm2 start src/main.js --name todo-app"
   },
   "keywords": [],
   "author": "",
