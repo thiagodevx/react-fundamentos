@@ -21,7 +21,37 @@ export default _ => {
 
     const setOperation = (operation) => {
         const newState = { ...state }
-        if (operation === '=') {
+        if (state.current === 0) {
+            newState.current = 1
+            newState.clearDisplay = true
+            newState.operation = operation
+        } else {
+            const isEquals = operation === '='
+            const currentOperation = state.operation
+            const values = [...state.values]
+            const firstNumber = parseFloat(values[0])
+            const secondNumber = parseFloat(values[1])
+            switch (currentOperation) {
+                case '+':
+                    values[0] = firstNumber + secondNumber
+                    break
+                case '-':
+                    values[0] = firstNumber - secondNumber
+                    break
+                case '/':
+                    values[0] = firstNumber / secondNumber
+                    break
+                case '*':
+                    values[0] = firstNumber * secondNumber
+                    break
+                default:
+            }
+            values[1] = 0
+            newState.values = values
+            newState.operation = isEquals ? null : operation
+            newState.current = isEquals ? 0 : 1
+            newState.clearDisplay = !isEquals
+            newState.displayValue = values[0]
 
         }
         setState(newState)
@@ -31,18 +61,21 @@ export default _ => {
         if (digit === '.' && state.displayValue.includes('.')) {
             return
         }
-        const newDisplayValue = state.displayValue === '0' ? digit : state.displayValue + digit
+
+        const currentValue = state.clearDisplay ? '0' : state.displayValue
+        const newDisplayValue = currentValue === '0' && digit !== '.' ? digit : currentValue + digit
         const newState = { ...state }
+        newState.values = [...state.values]
         newState.displayValue = newDisplayValue
         newState.values[state.current] = newDisplayValue
+        newState.clearDisplay = false
         setState(newState)
     }
 
-    const currentValue = state.clearDisplay ? '' : state.displayValue
 
     return (
         <div className="calculator">
-            <Display value={currentValue}></Display>
+            <Display value={state.displayValue}></Display>
             <Button clicked={clearMemory} triple label='AC'></Button>
             <Button clicked={setOperation} operation label='/'></Button>
             <Button clicked={addDigit} label='7'></Button>
