@@ -7,5 +7,5 @@ server.use(bodyParser.json())
 
 const port = 3003
 server.listen(port, () => {
-  console.log(`Backend is running on port ${port}`)
+  console.log(`Backend is running on port ${port}.`)
 })
