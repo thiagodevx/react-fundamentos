@@ -5,7 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "nodemon",
-    "prod": "pm2 start src/main.js --name todo-app"
+    "prod": "pm2 start src/main.js --name todo-app",
+    "monit": "pm2 monit"
   },
   "keywords": [],
   "author": "",
