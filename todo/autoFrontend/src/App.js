@@ -1,15 +1,13 @@
 import React from 'react'
+import Routes from './routes/Routes'
 import './App.css'
-import Todo from './todo/Todo'
-import About from './about/About'
 import Menu from './template/Menu'
 
 export default _ => {
   return (
-    <div className="container">
+    <div className='container'>
       <Menu></Menu>
-      <Todo></Todo>
-      <About></About>
+      <Routes></Routes>
     </div>
   )
 }
