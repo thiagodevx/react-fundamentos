@@ -1,9 +1,10 @@
 import React from 'react'
+import PageHeader from '../template/PageHeader'
 
 export default _ => {
   return (
     <div>
-      <h1>Todo</h1>
+      <PageHeader name='tarefas' small='cadastro'></PageHeader>
     </div>
   )
 }
