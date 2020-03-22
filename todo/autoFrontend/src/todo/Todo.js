@@ -21,33 +21,25 @@ export default _ => {
   })
 
   const handleAdd = () => {
-
     const description = state.description
 
     axios.post(urlTodo, { description }).then(response => {
-      const newState = { ...state }
-      const newTodoList = [...state.todoList, response.data]
-      newState.description = ''
-      newState.todoList = newTodoList
-      setState(newState)
+      const todoList = [...state.todoList, response.data]
+      const description = ''
+      setState({ ...state, description, todoList })
     })
-
   }
 
   const refresh = () => {
     axios.get(`${urlTodo}?sort=-createdAt`).then(response => {
-      const newState = { ...state }
-      newState.todoList = response.data
-      console.log(response.data)
-      newState.refresh = false
-      setState(newState)
+      const todoList = response.data
+      const refresh = false
+      setState({ ...state, todoList, refresh })
     })
   }
 
-  const changeDescription = (description) => {
-    const newState = { ...state }
-    newState.description = description
-    setState(newState)
+  const changeDescription = description => {
+    setState({ ...state, description })
   }
 
   return (

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default props => (
+export default ({ name, small }) => (
   <header className='page-header'>
     <h2>
-      {props.name} <small>{props.small}</small>
+      {name} <small>{small}</small>
     </h2>
   </header>
 )
