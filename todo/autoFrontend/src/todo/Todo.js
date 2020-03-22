@@ -29,6 +29,20 @@ export default _ => {
     })
   }
 
+  const markAsDone = _id => {
+    axios.put(`${urlTodo}/${_id}`, { done: true }).then(response => {
+      const todoList = [response.data, ...state.todoList.filter(todo => todo._id !== _id)]
+      setState({ ...state }, todoList)
+    })
+  }
+
+  const markAsPending = _id => {
+    axios.put(`${urlTodo}/${_id}`, { done: false }).then(response => {
+      const todoList = [response.data, ...state.todoList.filter(todo => todo._id !== _id)]
+      setState({ ...state }, todoList)
+    })
+  }
+
   const remove = _id => {
     axios.delete(`${urlTodo}/${_id}`).then(() => {
       const todoList = state.todoList.filter(todo => todo._id !== _id)
@@ -52,7 +66,11 @@ export default _ => {
     <div>
       <PageHeader name='tarefas' small='cadastro'></PageHeader>
       <TodoForm handleAdd={handleAdd} description={state.description} changeDescription={changeDescription}></TodoForm>
-      <TodoList list={state.todoList} handleRemove={remove}></TodoList>
+      <TodoList
+        list={state.todoList}
+        handleRemove={remove}
+        markAsDone={markAsDone}
+        markAsPending={markAsPending}></TodoList>
     </div>
   )
 }
