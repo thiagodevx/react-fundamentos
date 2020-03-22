@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-export default _ => (
+export default props => (
   <div>
-    <h1>List</h1>
+    {props.list.map(todo => <h1 key={todo}>{todo}</h1>)}
   </div>
-)
+);
