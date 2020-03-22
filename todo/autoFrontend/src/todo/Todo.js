@@ -22,7 +22,6 @@ export default _ => {
 
   const handleAdd = () => {
     const description = state.description
-
     axios.post(urlTodo, { description }).then(response => {
       const todoList = [...state.todoList, response.data]
       const description = ''
@@ -30,6 +29,13 @@ export default _ => {
     })
   }
 
+  const remove = _id => {
+    axios.delete(`${urlTodo}/${_id}`).then(() => {
+      const todoList = state.todoList.filter(todo => todo._id !== _id)
+      console.log(todoList)
+      setState({ ...state, todoList })
+    })
+  }
   const refresh = () => {
     axios.get(`${urlTodo}?sort=-createdAt`).then(response => {
       const todoList = response.data
@@ -46,7 +52,7 @@ export default _ => {
     <div>
       <PageHeader name='tarefas' small='cadastro'></PageHeader>
       <TodoForm handleAdd={handleAdd} description={state.description} changeDescription={changeDescription}></TodoForm>
-      <TodoList list={state.todoList}></TodoList>
+      <TodoList list={state.todoList} handleRemove={remove}></TodoList>
     </div>
   )
 }
