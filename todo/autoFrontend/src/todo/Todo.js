@@ -9,7 +9,8 @@ const urlTodo = 'http://localhost:3003/api/todos'
 const initialState = {
   description: '',
   refresh: true,
-  todoList: []
+  todoList: [],
+  filteredList: []
 }
 export default _ => {
   const [state, setState] = useState(initialState)
@@ -66,10 +67,23 @@ export default _ => {
     setState({ ...state, description })
   }
 
+  const search = _ => {
+    const sort = 'sort=-createdAt'
+    const regex = `description__regex=/${state.description}/`
+    axios.get(`${urlTodo}?${sort}&${regex}`).then(response => {
+      const todoList = response.data
+      setState({ ...state, todoList })
+    })
+  }
+
   return (
     <div>
       <PageHeader name='tarefas' small='cadastro'></PageHeader>
-      <TodoForm handleAdd={handleAdd} description={state.description} changeDescription={changeDescription}></TodoForm>
+      <TodoForm
+        handleAdd={handleAdd}
+        description={state.description}
+        changeDescription={changeDescription}
+        search={search}></TodoForm>
       <TodoList
         list={state.todoList}
         handleRemove={remove}
