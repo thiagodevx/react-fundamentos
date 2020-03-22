@@ -23,11 +23,7 @@ export default _ => {
 
   const handleAdd = () => {
     const description = state.description
-    axios.post(urlTodo, { description }).then(response => {
-      const todoList = [...state.todoList, response.data]
-      const description = ''
-      setState({ ...state, description, todoList })
-    })
+    axios.post(urlTodo, { description }).then(_ => refresh())
   }
 
   const markAsDone = _id => {
