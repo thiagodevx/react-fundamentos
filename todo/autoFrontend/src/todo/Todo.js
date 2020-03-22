@@ -32,10 +32,10 @@ export default _ => {
   const remove = _id => {
     axios.delete(`${urlTodo}/${_id}`).then(() => {
       const todoList = state.todoList.filter(todo => todo._id !== _id)
-      console.log(todoList)
       setState({ ...state, todoList })
     })
   }
+
   const refresh = () => {
     axios.get(`${urlTodo}?sort=-createdAt`).then(response => {
       const todoList = response.data
