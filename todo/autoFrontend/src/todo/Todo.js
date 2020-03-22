@@ -31,15 +31,19 @@ export default _ => {
 
   const markAsDone = _id => {
     axios.put(`${urlTodo}/${_id}`, { done: true }).then(response => {
-      const todoList = [response.data, ...state.todoList.filter(todo => todo._id !== _id)]
-      setState({ ...state }, todoList)
+      const index = state.todoList.findIndex(todo => todo._id === _id)
+      const todoList = [...state.todoList]
+      todoList[index] = response.data
+      setState({ ...state, todoList })
     })
   }
 
   const markAsPending = _id => {
     axios.put(`${urlTodo}/${_id}`, { done: false }).then(response => {
-      const todoList = [response.data, ...state.todoList.filter(todo => todo._id !== _id)]
-      setState({ ...state }, todoList)
+      const index = state.todoList.findIndex(todo => todo._id === _id)
+      const todoList = [...state.todoList]
+      todoList[index] = response.data
+      setState({ ...state, todoList })
     })
   }
 
