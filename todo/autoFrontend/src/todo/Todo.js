@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import PageHeader from '../template/PageHeader';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
+import React, { useState } from 'react'
+import axios from 'axios'
+import PageHeader from '../template/PageHeader'
+import TodoForm from './TodoForm'
+import TodoList from './TodoList'
+
+const urlTodo = 'http://localhost:3003/api/todos'
 
 const initialState = {
   description: '',
   todoList: []
-};
+}
 export default _ => {
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(initialState)
 
   const handleAdd = () => {
-    const newState = { ...state };
-    const newTodoList = [...state.todoList, state.description];
-    newState.description = '';
-    newState.todoList = newTodoList;
-    setState(newState);
-  };
+    const description = state.description
+    axios.post(urlTodo, { description }).then(dados => console.log(dados))
+
+    const newState = { ...state }
+    const newTodoList = [...state.todoList, state.description]
+    newState.description = ''
+    newState.todoList = newTodoList
+    setState(newState)
+  }
   const changeDescription = (description) => {
-    const newState = { ...state };
-    newState.description = description;
-    setState(newState);
-  };
+    const newState = { ...state }
+    newState.description = description
+    setState(newState)
+  }
 
   return (
     <div>
@@ -29,5 +35,5 @@ export default _ => {
       <TodoForm handleAdd={handleAdd} description={state.description} changeDescription={changeDescription}></TodoForm>
       <TodoList list={state.todoList}></TodoList>
     </div>
-  );
-};
+  )
+}
