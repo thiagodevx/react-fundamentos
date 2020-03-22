@@ -1,0 +1,7 @@
+.markedAsDone {
+  text-decoration: line-through;
+  color: #999;
+}
+.btn {
+  margin-right: 5px;
+}
