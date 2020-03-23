@@ -55,7 +55,8 @@ export default _ => {
     axios.get(`${urlTodo}?sort=-createdAt`).then(response => {
       const todoList = response.data
       const refresh = false
-      setState({ ...state, todoList, refresh })
+      const description = ''
+      setState({ ...state, todoList, refresh, description })
     })
   }
 
@@ -72,6 +73,10 @@ export default _ => {
     })
   }
 
+  const clear = _ => {
+    setState({ ...state, refresh: true })
+  }
+
   return (
     <div>
       <PageHeader name='tarefas' small='cadastro'></PageHeader>
@@ -79,7 +84,8 @@ export default _ => {
         handleAdd={handleAdd}
         description={state.description}
         changeDescription={changeDescription}
-        search={search}></TodoForm>
+        search={search}
+        clear={clear}></TodoForm>
       <TodoList
         list={state.todoList}
         handleRemove={remove}
