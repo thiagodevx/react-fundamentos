@@ -1,7 +1,9 @@
 import { combineReducers, createStore } from 'redux'
-import BasicState from './BasicState'
+import BasicReducer from './BasicReducer'
+import TesteReducer from './teste/TesteReducer'
 
 const reducers = combineReducers({
-    state: BasicState
+    state: BasicReducer,
+    testeState: TesteReducer
 })
 export default createStore(reducers)

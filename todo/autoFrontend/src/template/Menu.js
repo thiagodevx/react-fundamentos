@@ -15,6 +15,9 @@ export default _ => (
             <a href='/todos'>Tarefas</a>
           </li>
           <li>
+            <a href='/teste'>Teste</a>
+          </li>
+          <li>
             <a href='/about'>Sobre</a>
           </li>
         </ul>
