@@ -10,7 +10,7 @@ export const decrementCounter = _ => ({
   type: DECREMENT_COUNTER
 })
 
-export const changeStep = step => ({
+export const changeStep = e => ({
   type: CHANGE_STEP,
-  payload: step
+  payload: +e.target.value
 })
