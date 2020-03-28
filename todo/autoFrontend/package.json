@@ -36,6 +36,8 @@
   },
   "devDependencies": {
     "bootstrap": "3.3.7",
-    "font-awesome": "4.7.0"
+    "font-awesome": "4.7.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   }
 }

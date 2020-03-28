@@ -9,7 +9,8 @@ const urlTodo = 'http://localhost:3003/api/todos'
 const initialState = {
   description: '',
   refresh: true,
-  todoList: []
+  todoList: [],
+  filteredList: []
 }
 export default _ => {
   const [state, setState] = useState(initialState)
@@ -21,40 +22,75 @@ export default _ => {
   })
 
   const handleAdd = () => {
-
     const description = state.description
+    axios.post(urlTodo, { description }).then(_ => refresh())
+  }
 
-    axios.post(urlTodo, { description }).then(response => {
-      const newState = { ...state }
-      const newTodoList = [...state.todoList, response.data]
-      newState.description = ''
-      newState.todoList = newTodoList
-      setState(newState)
+  const markAsDone = _id => {
+    axios.put(`${urlTodo}/${_id}`, { done: true }).then(response => {
+      const index = state.todoList.findIndex(todo => todo._id === _id)
+      const todoList = [...state.todoList]
+      todoList[index] = response.data
+      setState({ ...state, todoList })
     })
+  }
 
+  const markAsPending = _id => {
+    axios.put(`${urlTodo}/${_id}`, { done: false }).then(response => {
+      const index = state.todoList.findIndex(todo => todo._id === _id)
+      const todoList = [...state.todoList]
+      todoList[index] = response.data
+      setState({ ...state, todoList })
+    })
+  }
+
+  const remove = _id => {
+    axios.delete(`${urlTodo}/${_id}`).then(() => {
+      const todoList = state.todoList.filter(todo => todo._id !== _id)
+      setState({ ...state, todoList })
+    })
   }
 
   const refresh = () => {
     axios.get(`${urlTodo}?sort=-createdAt`).then(response => {
-      const newState = { ...state }
-      newState.todoList = response.data
-      console.log(response.data)
-      newState.refresh = false
-      setState(newState)
+      const todoList = response.data
+      const refresh = false
+      const description = ''
+      setState({ ...state, todoList, refresh, description })
     })
   }
 
-  const changeDescription = (description) => {
-    const newState = { ...state }
-    newState.description = description
-    setState(newState)
+  const changeDescription = description => {
+    setState({ ...state, description })
+  }
+
+  const search = _ => {
+    const sort = 'sort=-createdAt'
+    const regex = `description__regex=/${state.description}/`
+    axios.get(`${urlTodo}?${sort}&${regex}`).then(response => {
+      const todoList = response.data
+      setState({ ...state, todoList })
+    })
+  }
+
+  const clear = _ => {
+    setState({ ...state, refresh: true })
   }
 
   return (
     <div>
       <PageHeader name='tarefas' small='cadastro'></PageHeader>
-      <TodoForm handleAdd={handleAdd} description={state.description} changeDescription={changeDescription}></TodoForm>
-      <TodoList list={state.todoList}></TodoList>
+      <TodoForm
+        handleAdd={handleAdd}
+        description={state.description}
+        changeDescription={changeDescription}
+        search={search}
+        clear={clear}></TodoForm>
+      <TodoList
+        list={state.todoList}
+        handleRemove={remove}
+        markAsDone={markAsDone}
+        markAsPending={markAsPending}></TodoList>
     </div>
   )
 }
