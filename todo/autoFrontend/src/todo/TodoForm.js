@@ -40,11 +40,6 @@ const TodoForm = props => {
           onClick={props.handleAdd}
         ></IconButton>
         <IconButton
-          type="info"
-          icon="search"
-          onClick={props.search}
-        ></IconButton>
-        <IconButton
           type="default"
           icon="close"
           onClick={props.clear}
