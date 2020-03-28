@@ -1,7 +1,9 @@
-import { combineReducers, createStore } from 'redux'
-import TesteReducer from './teste/TesteReducer'
+import { combineReducers, createStore } from 'redux';
+import TesteReducer from './teste/TesteReducer';
+import CounterReducer from './counter/CounterReducer';
 
 const reducers = combineReducers({
-    testeState: TesteReducer
-})
-export default createStore(reducers)
+  counterState: CounterReducer,
+  testeState: TesteReducer
+});
+export default createStore(reducers);
