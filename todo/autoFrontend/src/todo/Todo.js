@@ -79,18 +79,20 @@ export default _ => {
 
   return (
     <div>
-      <PageHeader name='tarefas' small='cadastro'></PageHeader>
+      <PageHeader name="tarefas" small="cadastro"></PageHeader>
       <TodoForm
         handleAdd={handleAdd}
         description={state.description}
         changeDescription={changeDescription}
         search={search}
-        clear={clear}></TodoForm>
+        clear={clear}
+      ></TodoForm>
       <TodoList
         list={state.todoList}
         handleRemove={remove}
         markAsDone={markAsDone}
-        markAsPending={markAsPending}></TodoList>
+        markAsPending={markAsPending}
+      ></TodoList>
     </div>
   )
 }

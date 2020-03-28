@@ -4,7 +4,7 @@ import {
   incrementCounter,
   decrementCounter,
   changeStep
-} from '../redux/counter/CounterActions'
+} from './CounterActions'
 
 const Counter = props => (
   <div>
