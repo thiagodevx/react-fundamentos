@@ -12,9 +12,8 @@ export const atualizarDescription = e => ({
   type: ATUALIZAR_DESCRIPTION,
   payload: e.target.value
 })
-export const criarTarefa = tarefa => ({
-  type: CRIAR_TODO,
-  payload: tarefa
+export const criarTarefa = _ => ({
+  type: CRIAR_TODO
 })
 
 export const deletarTarefa = _id => ({

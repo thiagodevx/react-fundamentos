@@ -2,7 +2,11 @@ import React from 'react'
 import Grid from '../template/Grid'
 import IconButton from '../template/IconButton'
 import { connect } from 'react-redux'
-import { atualizarDescription, limparDescription } from './TodoActions'
+import {
+  atualizarDescription,
+  limparDescription,
+  criarTarefa
+} from './TodoActions'
 
 const TodoForm = props => {
   const keyHandler = e => {
@@ -55,6 +59,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   changeDescription: atualizarDescription,
-  clear: limparDescription
+  clear: limparDescription,
+  handleAdd: criarTarefa
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm)

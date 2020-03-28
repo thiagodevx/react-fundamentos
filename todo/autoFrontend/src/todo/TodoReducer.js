@@ -7,13 +7,7 @@ import {
 } from './TodoActions'
 
 const initialState = {
-  todos: [
-    {
-      _id: 1,
-      description: 'Pagar Fatura do Cartão',
-      done: true
-    }
-  ],
+  todos: [],
   description: ''
 }
 
@@ -22,7 +16,7 @@ export default (state = initialState, { type, payload }) => {
     case CRIAR_TODO:
       return {
         ...state,
-        todos: [...state.todos, newTodo(payload)],
+        todos: [...state.todos, newTodo(state.description)],
         description: ''
       }
 
