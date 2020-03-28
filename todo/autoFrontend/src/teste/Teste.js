@@ -1,12 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { testeAtualizarValor } from '../redux/teste/TesteActions'
 
-export default () => {
-    const valor = 'oi'
-    const updateValor = () => { }
+const Teste = ({ valor, updateValue }) => {
     return (
         <div>
             <p>O valor do input é: {valor}</p>
-            <input value={valor} onChange={updateValor}></input>
+            <input value={valor} onChange={e => updateValue(e.target.value)}></input>
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    valor: state.testeState.valor
+})
+
+const mapDispatchToProps = {
+    updateValue: testeAtualizarValor
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Teste)

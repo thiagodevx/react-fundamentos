@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
         case TESTE_ATUALIZAR_VALOR:
-            return { ...state, teste: payload }
+            return { ...state, valor: payload }
         default:
             return state
     }
