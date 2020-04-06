@@ -3,29 +3,27 @@ import {
   DELETAR_TODO,
   MARCAR_DONE_TODO,
   MARCAR_PENDING_TODO,
-  ATUALIZAR_DESCRIPTION
+  ATUALIZAR_DESCRIPTION,
 } from './TodoActions'
 
 const initialState = {
   todos: [],
-  description: ''
+  description: '',
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case ATUALIZAR_DESCRIPTION:
+      return {
+        ...state,
+        description: payload,
+      }
     case CRIAR_TODO:
       return {
         ...state,
         todos: [...state.todos, newTodo(state.description)],
-        description: ''
+        description: '',
       }
-
-    case ATUALIZAR_DESCRIPTION:
-      return {
-        ...state,
-        description: payload
-      }
-
     case DELETAR_TODO:
       return deletarTodo(state, payload)
     case MARCAR_DONE_TODO:
@@ -42,7 +40,7 @@ let done = false
 const newTodo = description => ({
   _id: count++,
   description,
-  done
+  done,
 })
 const deletarTodo = (state, _id) => {
   const todos = state.todos.filter(todo => todo._id !== _id)
