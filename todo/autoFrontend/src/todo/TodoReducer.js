@@ -1,60 +1,17 @@
-import {
-  CRIAR_TODO,
-  DELETAR_TODO,
-  MARCAR_DONE_TODO,
-  MARCAR_PENDING_TODO,
-  ATUALIZAR_DESCRIPTION,
-} from './TodoActions'
+import { SET_TAREFAS, SET_DESCRICAO } from './TodoActions'
 
 const initialState = {
-  todos: [],
-  description: '',
+  tarefas: [],
+  descricao: '',
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case ATUALIZAR_DESCRIPTION:
-      return {
-        ...state,
-        description: payload,
-      }
-    case CRIAR_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, newTodo(state.description)],
-        description: '',
-      }
-    case DELETAR_TODO:
-      return deletarTodo(state, payload)
-    case MARCAR_DONE_TODO:
-      return marcarComoDone(state, payload)
-    case MARCAR_PENDING_TODO:
-      return marcarComoPending(state, payload)
+    case SET_TAREFAS:
+      return { ...state, tarefas: payload }
+    case SET_DESCRICAO:
+      return { ...state, descricao: payload }
     default:
       return state
   }
-}
-let count = 1
-let done = false
-
-const newTodo = description => ({
-  _id: count++,
-  description,
-  done,
-})
-const deletarTodo = (state, _id) => {
-  const todos = state.todos.filter(todo => todo._id !== _id)
-  return { ...state, todos }
-}
-const marcarComoDone = (state, _id) => {
-  const todos = state.todos.map(todo => {
-    return todo._id === _id ? { ...todo, done: true } : todo
-  })
-  return { ...state, todos }
-}
-const marcarComoPending = (state, _id) => {
-  const todos = state.todos.map(todo => {
-    return todo._id === _id ? { ...todo, done: false } : todo
-  })
-  return { ...state, todos }
 }

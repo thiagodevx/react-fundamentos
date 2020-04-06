@@ -1,32 +1,14 @@
-export const CRIAR_TODO = 'CRIAR_TODO'
-export const DELETAR_TODO = 'DELETAR_TODO'
-export const MARCAR_DONE_TODO = 'MARCAR_DONE_TODO'
-export const MARCAR_PENDING_TODO = 'MARCAR_PENDING_TODO'
-export const ATUALIZAR_DESCRIPTION = 'ATUALIZAR_DESCRIPTION'
+import axios from 'axios'
 
-export const limparDescription = _ => ({
-  type: ATUALIZAR_DESCRIPTION,
-  payload: ''
-})
-export const atualizarDescription = e => ({
-  type: ATUALIZAR_DESCRIPTION,
-  payload: e.target.value
-})
-export const criarTarefa = _ => ({
-  type: CRIAR_TODO
+export const SET_TAREFAS = 'SET_TAREFAS'
+export const SET_DESCRICAO = 'SET_DESCRICAO'
+
+export const setTarefas = tarefas => ({
+  type: SET_TAREFAS,
+  payload: tarefas,
 })
 
-export const deletarTarefa = _id => ({
-  type: DELETAR_TODO,
-  payload: _id
-})
-
-export const marcarTarefaComDone = _id => ({
-  type: MARCAR_DONE_TODO,
-  payload: _id
-})
-
-export const marcarTarefaComPending = _id => ({
-  type: MARCAR_PENDING_TODO,
-  payload: _id
+export const setDescricao = descricao => ({
+  type: SET_DESCRICAO,
+  payload: descricao,
 })
