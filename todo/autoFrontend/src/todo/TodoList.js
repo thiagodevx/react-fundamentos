@@ -2,8 +2,15 @@ import React from 'react'
 import './TodoList.css'
 import { connect } from 'react-redux'
 import TodoListItem from './TodoListItem'
+import { loadTodos } from './TodoActions'
+import { useEffect } from 'react'
 
 const TodoList = props => {
+  const loadTodos = props.loadTodos
+
+  useEffect(() => {
+    loadTodos()
+  }, [loadTodos])
   return (
     <table className="table">
       <thead>
@@ -13,8 +20,8 @@ const TodoList = props => {
         </tr>
       </thead>
       <tbody>
-        {props.list.map(todo => (
-          <TodoListItem todo={todo}></TodoListItem>
+        {props.tarefas.map(tarefa => (
+          <TodoListItem tarefa={tarefa}></TodoListItem>
         ))}
       </tbody>
     </table>
@@ -22,7 +29,10 @@ const TodoList = props => {
 }
 
 const mapStateToProps = state => ({
-  list: state.todoState.todos,
+  tarefas: state.todoState.tarefas
 })
 
-export default connect(mapStateToProps)(TodoList)
+const mapDispatchToProps = {
+  loadTodos
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList)

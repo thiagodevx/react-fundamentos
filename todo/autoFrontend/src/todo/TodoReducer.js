@@ -1,16 +1,14 @@
-import { SET_TAREFAS, SET_DESCRICAO } from './TodoActions'
+import { LOAD_TODOS } from './TodoActions'
 
 const initialState = {
   tarefas: [],
-  descricao: '',
+  descricao: ''
 }
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_TAREFAS:
-      return { ...state, tarefas: payload }
-    case SET_DESCRICAO:
-      return { ...state, descricao: payload }
+    case LOAD_TODOS:
+      return { ...state, tarefas: payload.data }
     default:
       return state
   }

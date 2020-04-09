@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "nodemon",
+    "start": "nodemon",
     "prod": "pm2 start src/main.js --name todo-app",
     "monit": "pm2 monit"
   },

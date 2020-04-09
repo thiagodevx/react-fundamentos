@@ -1,11 +1,11 @@
 import React from 'react'
 import IconButton from '../template/IconButton'
 
-export default ({ todo }) => (
-  <tr key={todo._id}>
-    <td className={todo.done ? 'markedAsDone' : ''}>{todo.description}</td>
+export default ({ tarefa }) => (
+  <tr key={tarefa._id}>
+    <td className={tarefa.done ? 'markedAsDone' : ''}>{tarefa.description}</td>
     <td>
-      {todo.done ? (
+      {tarefa.done ? (
         <IconButton type="warning" icon="undo" onClick={() => {}}></IconButton>
       ) : (
         <IconButton type="success" icon="check" onClick={() => {}}></IconButton>
