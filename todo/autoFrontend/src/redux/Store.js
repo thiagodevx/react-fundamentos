@@ -6,6 +6,7 @@ import ClickReducer from '../click/ClickReducer'
 import GrupoReducer from '../grupo/GrupoReducer'
 import reduxPromise from 'redux-promise'
 import reduxMulti from 'redux-multi'
+import reduxThunk from 'redux-thunk'
 
 const devTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -18,7 +19,8 @@ const reducers = combineReducers({
   grupoState: GrupoReducer
 })
 
-export default applyMiddleware(reduxPromise, reduxMulti)(createStore)(
-  reducers,
-  devTools
-)
+export default applyMiddleware(
+  reduxPromise,
+  reduxMulti,
+  reduxThunk
+)(createStore)(reducers, devTools)
