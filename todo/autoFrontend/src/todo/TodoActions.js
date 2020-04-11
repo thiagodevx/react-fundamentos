@@ -19,8 +19,10 @@ export const loadTodos = _ => {
 export const ADD_TODO = 'ADD_TODO'
 export const addTodo = description => {
   const request = axios.post(`${URL}`, { description })
-  return {
-    type: ADD_TODO,
-    payload: request
-  }
+  return [
+    {
+      type: ADD_TODO,
+      payload: request
+    }
+  ]
 }
