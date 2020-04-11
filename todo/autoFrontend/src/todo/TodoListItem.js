@@ -2,7 +2,7 @@ import React from 'react'
 import IconButton from '../template/IconButton'
 
 export default ({ tarefa }) => (
-  <tr key={tarefa._id}>
+  <tr>
     <td className={tarefa.done ? 'markedAsDone' : ''}>{tarefa.description}</td>
     <td>
       {tarefa.done ? (

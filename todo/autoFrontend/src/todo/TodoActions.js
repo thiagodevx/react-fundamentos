@@ -4,7 +4,7 @@ const URL = 'http://localhost:3003/api/todos'
 export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION'
 export const updateDescription = e => ({
   type: UPDATE_DESCRIPTION,
-  value: e.target.value
+  payload: e.target.value
 })
 
 export const LOAD_TODOS = 'LOAD_TODOS'

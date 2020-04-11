@@ -8,7 +8,7 @@ const TodoForm = props => {
   const keyHandler = e => {
     switch (e.key) {
       case 'Enter':
-        props.addTodo(props.descricao)
+        props.addTodo(props.description)
         break
       case 'Escape':
         props.clear()
@@ -24,7 +24,7 @@ const TodoForm = props => {
           id="descricao"
           className="form-control"
           placeholder="Adicione uma tarefa"
-          value={props.descricao}
+          value={props.description}
           onChange={props.updateDescription}
           onKeyUp={keyHandler}
         ></input>
@@ -33,7 +33,7 @@ const TodoForm = props => {
         <IconButton
           type="primary"
           icon="plus"
-          onClick={() => props.addTodo(props.descricao)}
+          onClick={() => props.addTodo(props.description)}
         ></IconButton>
         <IconButton
           type="default"
@@ -45,7 +45,7 @@ const TodoForm = props => {
   )
 }
 const mapStateToProps = state => ({
-  descricao: state.todoState.descricao
+  description: state.todoState.description
 })
 const mapDispatchToProps = {
   addTodo,

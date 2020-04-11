@@ -21,7 +21,7 @@ const TodoList = props => {
       </thead>
       <tbody>
         {props.tarefas.map(tarefa => (
-          <TodoListItem tarefa={tarefa}></TodoListItem>
+          <TodoListItem key={tarefa._id} tarefa={tarefa}></TodoListItem>
         ))}
       </tbody>
     </table>
